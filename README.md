@@ -21,7 +21,5 @@ This bootloader only supports file type 0x01 for this version. The others are su
 (You can try to download app.bin.bin using Xmoderm through this bootloader )
 
 The default debug UART is UART 1 with baudrate 115200, 8 byte, no parity, 1 stop bits. The download protocol is Xmoderm .
-
-The user application binary will be put at 0x8020000. So you need to change the on-chip start address to 0x8020000 and the value of NVIC_VectTab_FLASH in misc.h to 0x8020000. If you define NVIC_Flash somewhere else(like RTOS), you need to change its value from 0x8000000 to 0x8020000 too.
  
 The code is compiled by TI CGTools of C6000.
