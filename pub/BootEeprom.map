@@ -1,0 +1,178 @@
+******************************************************************************
+               TMS320C6x Linker PC v7.2.4                      
+******************************************************************************
+>> Linked Mon Jul 18 14:18:17 2011
+
+OUTPUT FILE NAME:   <pub/BootEeprom.out>
+ENTRY POINT SYMBOL: "_c_int00"  address: 80001980
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  L2RAM                 11800000   00020000  0000400c  0001bff4  RWIX
+  SHAREDRAM             80000000   00020000  00001b92  0001e46e  RWIX
+  EMIFB_SDRAM           c0000000   02000000  00200200  01dffe00  RWIX
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+11800000    11800000    0000400c   00000000    rw-
+  11800000    11800000    00004000   00000000    rw- .stack
+  11804000    11804000    0000000c   00000000    rw- .bss
+80000000    80000000    00001ac0   00001ac0    rwx
+  80000000    80000000    00001ac0   00001ac0    rwx .text
+80001ac0    80001ac0    000000be   000000be    r--
+  80001ac0    80001ac0    000000be   000000be    r-- .const
+80001b80    80001b80    00000014   00000014    rw-
+  80001b80    80001b80    00000014   00000014    rw- .fardata
+c0000000    c0000000    00200200   00000000    rw-
+  c0000000    c0000000    00200200   00000000    rw- .far
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.cinit     0    c0000000    00000000     UNINITIALIZED
+
+.stack     0    11800000    00004000     UNINITIALIZED
+                  11800000    00000008     rts6740_elf.lib : boot.obj (.stack)
+                  11800008    00003ff8     --HOLE--
+
+.bss       0    11804000    0000000c     UNINITIALIZED
+                  11804000    0000000c     Boot.obj (.bss)
+
+.text      0    80000000    00001ac0     
+                  80000000    000007c0     Boot.obj (.text)
+                  800007c0    00000460     SpiFlash.obj (.text)
+                  80000c20    00000320     Spi.obj (.text)
+                  80000f40    00000240     HardwareInitial.obj (.text)
+                  80001180    00000180     rts6740_elf.lib : autoinit.obj (.text:_auto_init_elf)
+                  80001300    00000100                     : cpy_tbl.obj (.text:copy_in)
+                  80001400    00000200     HardwareInitial.obj (.text:vecs)
+                  80001600    00000120     Debug.obj (.text)
+                  80001720    000000e0     rts6740_elf.lib : exit.obj (.text:exit)
+                  80001800    000000e0     Boot.obj (.text:retain)
+                  800018e0    000000a0     rts6740_elf.lib : memcpy64.obj (.text:memcpy)
+                  80001980    00000080                     : boot.obj (.text:_c_int00)
+                  80001a00    00000040                     : args_main.obj (.text:_args_main)
+                  80001a40    00000020     SystemBase.obj (.text)
+                  80001a60    00000020     rts6740_elf.lib : tdeh_init.obj (.text:__tdeh_init)
+                  80001a80    00000020                     : _lock.obj (.text:_nop)
+                  80001aa0    00000020                     : exit.obj (.text:abort)
+
+.const     0    80001ac0    000000be     
+                  80001ac0    000000bb     Boot.obj (.const:.string)
+                  80001b7b    00000003     HardwareInitial.obj (.const:.string)
+
+.fardata   0    80001b80    00000014     
+                  80001b80    0000000c     rts6740_elf.lib : exit.obj (.fardata)
+                  80001b8c    00000008                     : _lock.obj (.fardata)
+
+.far       0    c0000000    00200200     UNINITIALIZED
+                  c0000000    00200200     Boot.obj (.far)
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address    name
+--------   ----
+80001aa0   C$$EXIT
+800016cc   DebugSendChar
+80001600   DebugSendString
+80001a40   DelayLoop
+80001064   HardwareInitial
+80000ce0   SPIXferBytes
+80000c20   SPIXferOneByte
+80001800   Timer0InterruptService
+80000aac   WinbondW25BlockErase
+80000a08   WinbondW25ClaimBus
+80000964   WinbondW25FastRead
+800007d4   WinbondW25PageWrite
+800007c0   WinbondW25ReleaseBus
+11804000   __TI_STACK_END
+00004000   __TI_STACK_SIZE
+11804000   __TI_STATIC_BASE
+00000001   __TI_args_main
+80001b88   __TI_enable_exit_profile_output
+ffffffff   __TI_pprof_out_hndl
+ffffffff   __TI_prof_data_size
+ffffffff   __TI_prof_data_start
+ffffffff   __binit__
+ffffffff   __c_args__
+80001a60   __tdeh_init
+80001a00   _args_main
+80001180   _auto_init_elf
+80001980   _c_int00
+80001b80   _cleanup_ptr
+80001b84   _dtors_ptr
+80001b8c   _lock
+80001a80   _nop
+11800000   _stack
+80001b90   _unlock
+80001aa0   abort
+ffffffff   binit
+80001300   copy_in
+80001720   exit
+80000000   main
+800018e0   memcpy
+11804000   system_ms_count
+c0000000   uart_rx_buffer
+11804004   uart_rx_buffer_rd_ptr
+11804006   uart_rx_buffer_wr_ptr
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address    name
+--------   ----
+00000001   __TI_args_main
+00004000   __TI_STACK_SIZE
+11800000   _stack
+11804000   __TI_STACK_END
+11804000   __TI_STATIC_BASE
+11804000   system_ms_count
+11804004   uart_rx_buffer_rd_ptr
+11804006   uart_rx_buffer_wr_ptr
+80000000   main
+800007c0   WinbondW25ReleaseBus
+800007d4   WinbondW25PageWrite
+80000964   WinbondW25FastRead
+80000a08   WinbondW25ClaimBus
+80000aac   WinbondW25BlockErase
+80000c20   SPIXferOneByte
+80000ce0   SPIXferBytes
+80001064   HardwareInitial
+80001180   _auto_init_elf
+80001300   copy_in
+80001600   DebugSendString
+800016cc   DebugSendChar
+80001720   exit
+80001800   Timer0InterruptService
+800018e0   memcpy
+80001980   _c_int00
+80001a00   _args_main
+80001a40   DelayLoop
+80001a60   __tdeh_init
+80001a80   _nop
+80001aa0   C$$EXIT
+80001aa0   abort
+80001b80   _cleanup_ptr
+80001b84   _dtors_ptr
+80001b88   __TI_enable_exit_profile_output
+80001b8c   _lock
+80001b90   _unlock
+c0000000   uart_rx_buffer
+ffffffff   __TI_pprof_out_hndl
+ffffffff   __TI_prof_data_size
+ffffffff   __TI_prof_data_start
+ffffffff   __binit__
+ffffffff   __c_args__
+ffffffff   binit
+
+[43 symbols]
